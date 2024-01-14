@@ -45,7 +45,7 @@ static struct wl_list widgets;
 
 void wofi_run_init(struct mode* this, struct map* config) {
 	mode = this;
-	always_parse_args = strcmp(config_get(config, arg_names[0], "false"), "true") == 0;
+	always_parse_args = strcmp(config_get(config, arg_names[0], "true"), "true") == 0;
 	show_all = strcmp(config_get(config, arg_names[1], "true"), "true") == 0;
 	print_command = strcmp(config_get(config, arg_names[2], "false"), "true") == 0;
 
