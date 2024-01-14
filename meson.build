@@ -1,4 +1,4 @@
-project('wofi', 'c', version : '0.1.0', default_options : ['c_std=c11', 'buildtype=release', 'warning_level=2'])
+project('wofi', 'c', version : '0.1.0-dev', default_options : ['c_std=c11', 'buildtype=release', 'warning_level=2'])
 cc = meson.get_compiler('c')
 
 pkgcfg = import('pkgconfig')
@@ -9,7 +9,7 @@ wayland = dependency('wayland-client')
 threads = dependency('threads')
 dl = cc.find_library('dl')
 
-version = meson.project_version()
+version = meson.project_version().split('-')[0]
 
 add_project_arguments('-D_GNU_SOURCE', '-DVERSION="' + version + '"', language : 'c')
 add_project_link_arguments('-rdynamic', language : 'c')
