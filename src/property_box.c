@@ -20,41 +20,45 @@
 #include <map.h>
 
 struct _WofiPropertyBox {
-	GtkBox super;
+  GtkBox super;
 };
 
 typedef struct {
-	struct map* properties;
+  struct map *properties;
 } WofiPropertyBoxPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE(WofiPropertyBox, wofi_property_box, GTK_TYPE_BOX)
 
-static void wofi_property_box_init(WofiPropertyBox* box) {
-	WofiPropertyBoxPrivate* this = wofi_property_box_get_instance_private(box);
-	this->properties = map_init();
+static void wofi_property_box_init(WofiPropertyBox *box) {
+  WofiPropertyBoxPrivate *this = wofi_property_box_get_instance_private(box);
+  this->properties = map_init();
 }
 
-static void finalize(GObject* obj) {
-	WofiPropertyBoxPrivate* this = wofi_property_box_get_instance_private(WOFI_PROPERTY_BOX(obj));
-	map_free(this->properties);
-	G_OBJECT_CLASS(wofi_property_box_parent_class)->finalize(obj);
+static void finalize(GObject *obj) {
+  WofiPropertyBoxPrivate *this =
+      wofi_property_box_get_instance_private(WOFI_PROPERTY_BOX(obj));
+  map_free(this->properties);
+  G_OBJECT_CLASS(wofi_property_box_parent_class)->finalize(obj);
 }
 
-static void wofi_property_box_class_init(WofiPropertyBoxClass* class) {
-	GObjectClass* g_class = G_OBJECT_CLASS(class);
-	g_class->finalize = finalize;
+static void wofi_property_box_class_init(WofiPropertyBoxClass *class) {
+  GObjectClass *g_class = G_OBJECT_CLASS(class);
+  g_class->finalize = finalize;
 }
 
-GtkWidget* wofi_property_box_new(GtkOrientation orientation, gint spacing) {
-	return g_object_new(WOFI_TYPE_PROPERTY_BOX, "orientation", orientation, "spacing", spacing, NULL);
+GtkWidget *wofi_property_box_new(GtkOrientation orientation, gint spacing) {
+  return g_object_new(WOFI_TYPE_PROPERTY_BOX, "orientation", orientation,
+                      "spacing", spacing, NULL);
 }
 
-void wofi_property_box_add_property(WofiPropertyBox* box, const gchar* key, gchar* value) {
-	WofiPropertyBoxPrivate* this = wofi_property_box_get_instance_private(box);
-	map_put(this->properties, key, value);
+void wofi_property_box_add_property(WofiPropertyBox *box, const gchar *key,
+                                    gchar *value) {
+  WofiPropertyBoxPrivate *this = wofi_property_box_get_instance_private(box);
+  map_put(this->properties, key, value);
 }
 
-const gchar* wofi_property_box_get_property(WofiPropertyBox* box, const gchar* key) {
-	WofiPropertyBoxPrivate* this = wofi_property_box_get_instance_private(box);
-	return map_get(this->properties, key);
+const gchar *wofi_property_box_get_property(WofiPropertyBox *box,
+                                            const gchar *key) {
+  WofiPropertyBoxPrivate *this = wofi_property_box_get_instance_private(box);
+  return map_get(this->properties, key);
 }

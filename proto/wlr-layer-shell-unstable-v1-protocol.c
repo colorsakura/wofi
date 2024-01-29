@@ -25,16 +25,16 @@
  * THIS SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdint.h>
 #include "wayland-util.h"
+#include <stdint.h>
+#include <stdlib.h>
 
 #ifndef __has_attribute
-# define __has_attribute(x) 0  /* Compatibility with non-clang compilers. */
+#define __has_attribute(x) 0 /* Compatibility with non-clang compilers. */
 #endif
 
 #if (__has_attribute(visibility) || defined(__GNUC__) && __GNUC__ >= 4)
-#define WL_PRIVATE __attribute__ ((visibility("hidden")))
+#define WL_PRIVATE __attribute__((visibility("hidden")))
 #else
 #define WL_PRIVATE
 #endif
@@ -45,47 +45,43 @@ extern const struct wl_interface xdg_popup_interface;
 extern const struct wl_interface zwlr_layer_surface_v1_interface;
 
 static const struct wl_interface *types[] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	&zwlr_layer_surface_v1_interface,
-	&wl_surface_interface,
-	&wl_output_interface,
-	NULL,
-	NULL,
-	&xdg_popup_interface,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    &zwlr_layer_surface_v1_interface,
+    &wl_surface_interface,
+    &wl_output_interface,
+    NULL,
+    NULL,
+    &xdg_popup_interface,
 };
 
 static const struct wl_message zwlr_layer_shell_v1_requests[] = {
-	{ "get_layer_surface", "no?ous", types + 4 },
+    {"get_layer_surface", "no?ous", types + 4},
 };
 
 WL_PRIVATE const struct wl_interface zwlr_layer_shell_v1_interface = {
-	"zwlr_layer_shell_v1", 1,
-	1, zwlr_layer_shell_v1_requests,
-	0, NULL,
+    "zwlr_layer_shell_v1", 1, 1, zwlr_layer_shell_v1_requests, 0, NULL,
 };
 
 static const struct wl_message zwlr_layer_surface_v1_requests[] = {
-	{ "set_size", "uu", types + 0 },
-	{ "set_anchor", "u", types + 0 },
-	{ "set_exclusive_zone", "i", types + 0 },
-	{ "set_margin", "iiii", types + 0 },
-	{ "set_keyboard_interactivity", "u", types + 0 },
-	{ "get_popup", "o", types + 9 },
-	{ "ack_configure", "u", types + 0 },
-	{ "destroy", "", types + 0 },
+    {"set_size", "uu", types + 0},
+    {"set_anchor", "u", types + 0},
+    {"set_exclusive_zone", "i", types + 0},
+    {"set_margin", "iiii", types + 0},
+    {"set_keyboard_interactivity", "u", types + 0},
+    {"get_popup", "o", types + 9},
+    {"ack_configure", "u", types + 0},
+    {"destroy", "", types + 0},
 };
 
 static const struct wl_message zwlr_layer_surface_v1_events[] = {
-	{ "configure", "uuu", types + 0 },
-	{ "closed", "", types + 0 },
+    {"configure", "uuu", types + 0},
+    {"closed", "", types + 0},
 };
 
 WL_PRIVATE const struct wl_interface zwlr_layer_surface_v1_interface = {
-	"zwlr_layer_surface_v1", 1,
-	8, zwlr_layer_surface_v1_requests,
-	2, zwlr_layer_surface_v1_events,
+    "zwlr_layer_surface_v1",        1, 8,
+    zwlr_layer_surface_v1_requests, 2, zwlr_layer_surface_v1_events,
 };
-

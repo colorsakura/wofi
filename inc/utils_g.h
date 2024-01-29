@@ -22,8 +22,9 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-GdkPixbuf* utils_g_resize_pixbuf(GdkPixbuf* pixbuf, uint64_t image_size, GdkInterpType interp);
+GdkPixbuf *utils_g_resize_pixbuf(GdkPixbuf *pixbuf, uint64_t image_size,
+                                 GdkInterpType interp);
 
-GdkPixbuf* utils_g_pixbuf_from_base64(char* base64);
+GdkPixbuf *utils_g_pixbuf_from_base64(char *base64);
 
 #endif

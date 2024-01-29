@@ -22,12 +22,13 @@
 
 #include <map.h>
 
-void config_put(struct map* map, char* line);
+void config_put(struct map *map, char *line);
 
-void config_load(struct map* map, const char* config);
+void config_load(struct map *map, const char *config);
 
-char* config_get(struct map* config, const char* key, char* def_opt);
+char *config_get(struct map *config, const char *key, char *def_opt);
 
-uint8_t config_get_mnemonic(struct map* config, const char* key, char* def_opt, uint8_t num_choices, ...);
+uint8_t config_get_mnemonic(struct map *config, const char *key, char *def_opt,
+                            uint8_t num_choices, ...);
 
 #endif

@@ -27,19 +27,19 @@
 #include <gtk/gtk.h>
 
 struct widget {
-	size_t action_count;
-	char* mode, **text, *search_text, **actions;
-	struct widget_builder* builder;
+  size_t action_count;
+  char *mode, **text, *search_text, **actions;
+  struct widget_builder *builder;
 };
 
 struct mode {
-	void (*mode_exec)(const gchar* cmd);
-	struct widget* (*mode_get_widget)(void);
-	char* name, *dso;
-	struct wl_list link;
+  void (*mode_exec)(const gchar *cmd);
+  struct widget *(*mode_get_widget)(void);
+  char *name, *dso;
+  struct wl_list link;
 };
 
-void wofi_init(struct map* config);
+void wofi_init(struct map *config);
 
 void wofi_load_css(bool nyan);
 #endif

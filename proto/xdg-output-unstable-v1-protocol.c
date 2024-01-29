@@ -23,16 +23,16 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdint.h>
 #include "wayland-util.h"
+#include <stdint.h>
+#include <stdlib.h>
 
 #ifndef __has_attribute
-# define __has_attribute(x) 0  /* Compatibility with non-clang compilers. */
+#define __has_attribute(x) 0 /* Compatibility with non-clang compilers. */
 #endif
 
 #if (__has_attribute(visibility) || defined(__GNUC__) && __GNUC__ >= 4)
-#define WL_PRIVATE __attribute__ ((visibility("hidden")))
+#define WL_PRIVATE __attribute__((visibility("hidden")))
 #else
 #define WL_PRIVATE
 #endif
@@ -41,38 +41,33 @@ extern const struct wl_interface wl_output_interface;
 extern const struct wl_interface zxdg_output_v1_interface;
 
 static const struct wl_interface *types[] = {
-	NULL,
-	NULL,
-	&zxdg_output_v1_interface,
-	&wl_output_interface,
+    NULL,
+    NULL,
+    &zxdg_output_v1_interface,
+    &wl_output_interface,
 };
 
 static const struct wl_message zxdg_output_manager_v1_requests[] = {
-	{ "destroy", "", types + 0 },
-	{ "get_xdg_output", "no", types + 2 },
+    {"destroy", "", types + 0},
+    {"get_xdg_output", "no", types + 2},
 };
 
 WL_PRIVATE const struct wl_interface zxdg_output_manager_v1_interface = {
-	"zxdg_output_manager_v1", 2,
-	2, zxdg_output_manager_v1_requests,
-	0, NULL,
+    "zxdg_output_manager_v1", 2, 2, zxdg_output_manager_v1_requests, 0, NULL,
 };
 
 static const struct wl_message zxdg_output_v1_requests[] = {
-	{ "destroy", "", types + 0 },
+    {"destroy", "", types + 0},
 };
 
 static const struct wl_message zxdg_output_v1_events[] = {
-	{ "logical_position", "ii", types + 0 },
-	{ "logical_size", "ii", types + 0 },
-	{ "done", "", types + 0 },
-	{ "name", "2s", types + 0 },
-	{ "description", "2s", types + 0 },
+    {"logical_position", "ii", types + 0},
+    {"logical_size", "ii", types + 0},
+    {"done", "", types + 0},
+    {"name", "2s", types + 0},
+    {"description", "2s", types + 0},
 };
 
 WL_PRIVATE const struct wl_interface zxdg_output_v1_interface = {
-	"zxdg_output_v1", 2,
-	1, zxdg_output_v1_requests,
-	5, zxdg_output_v1_events,
+    "zxdg_output_v1", 2, 1, zxdg_output_v1_requests, 5, zxdg_output_v1_events,
 };
-
