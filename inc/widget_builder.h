@@ -23,10 +23,10 @@
 #include <property_box.h>
 
 struct widget_builder {
-	WofiPropertyBox* box;
-	struct widget* widget;
-	struct mode* mode;
-	size_t actions;
+  WofiPropertyBox *box;
+  struct widget *widget;
+  struct mode *mode;
+  size_t actions;
 };
 
 #endif

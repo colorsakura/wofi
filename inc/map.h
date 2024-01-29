@@ -18,23 +18,23 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
 
-struct map* map_init(void);
+struct map *map_init(void);
 
-struct map* map_init_void(void);
+struct map *map_init_void(void);
 
-void map_free(struct map* map);
+void map_free(struct map *map);
 
-bool map_put(struct map* map, const char* key, char* value);
+bool map_put(struct map *map, const char *key, char *value);
 
-bool map_put_void(struct map* map, const char* key, void* value);
+bool map_put_void(struct map *map, const char *key, void *value);
 
-void* map_get(struct map* map, const char* key);
+void *map_get(struct map *map, const char *key);
 
-bool map_contains(struct map* map, const char* key);
+bool map_contains(struct map *map, const char *key);
 
-size_t map_size(struct map* map);
+size_t map_size(struct map *map);
 
 #endif

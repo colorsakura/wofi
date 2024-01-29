@@ -18,31 +18,33 @@
 #ifndef WOFI_API_H
 #define WOFI_API_H
 
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 #include <wayland-client.h>
 
 struct cache_line {
-	char* line;
-	struct wl_list link;
+  char *line;
+  struct wl_list link;
 };
 
 struct mode;
 
-char* wofi_parse_image_escapes(const char* text);
+char *wofi_parse_image_escapes(const char *text);
 
-void wofi_write_cache(struct mode* mode, const char* cmd);
+void wofi_write_cache(struct mode *mode, const char *cmd);
 
-void wofi_remove_cache(struct mode* mode, const char* cmd);
+void wofi_remove_cache(struct mode *mode, const char *cmd);
 
-struct wl_list* wofi_read_cache(struct mode* mode);
+struct wl_list *wofi_read_cache(struct mode *mode);
 
-struct widget* wofi_create_widget(struct mode* mode, char* text[], char* search_text, char* actions[], size_t action_count);
+struct widget *wofi_create_widget(struct mode *mode, char *text[],
+                                  char *search_text, char *actions[],
+                                  size_t action_count);
 
-void wofi_insert_widgets(struct mode* mode);
+void wofi_insert_widgets(struct mode *mode);
 
-char* wofi_get_dso_path(struct mode* mode);
+char *wofi_get_dso_path(struct mode *mode);
 
 bool wofi_allow_images(void);
 
@@ -56,6 +58,6 @@ bool wofi_mod_shift(void);
 
 bool wofi_mod_control(void);
 
-void wofi_term_run(const char* cmd);
+void wofi_term_run(const char *cmd);
 
 #endif

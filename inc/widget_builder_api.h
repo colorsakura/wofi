@@ -25,28 +25,40 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
 struct css_class {
-	char* class;
-	struct wl_list link;
+  char *class;
+  struct wl_list link;
 };
 
-struct widget_builder* wofi_widget_builder_init(struct mode* mode, size_t actions);
+struct widget_builder *wofi_widget_builder_init(struct mode *mode,
+                                                size_t actions);
 
-void wofi_widget_builder_set_search_text(struct widget_builder* builder, char* search_text);
+void wofi_widget_builder_set_search_text(struct widget_builder *builder,
+                                         char *search_text);
 
-void wofi_widget_builder_set_action(struct widget_builder* builder, char* action);
+void wofi_widget_builder_set_action(struct widget_builder *builder,
+                                    char *action);
 
-__attribute__((sentinel)) void wofi_widget_builder_insert_text(struct widget_builder* builder, const char* text, ...);
+__attribute__((sentinel)) void
+wofi_widget_builder_insert_text(struct widget_builder *builder,
+                                const char *text, ...);
 
-void wofi_widget_builder_insert_text_with_list(struct widget_builder* builder, const char* text, struct wl_list* classes);
+void wofi_widget_builder_insert_text_with_list(struct widget_builder *builder,
+                                               const char *text,
+                                               struct wl_list *classes);
 
-__attribute__((sentinel)) void wofi_widget_builder_insert_image(struct widget_builder* builder, GdkPixbuf* pixbuf, ...);
+__attribute__((sentinel)) void
+wofi_widget_builder_insert_image(struct widget_builder *builder,
+                                 GdkPixbuf *pixbuf, ...);
 
-void wofi_widget_builder_insert_image_with_list(struct widget_builder* builder, GdkPixbuf* pixbuf, struct wl_list* classes);
+void wofi_widget_builder_insert_image_with_list(struct widget_builder *builder,
+                                                GdkPixbuf *pixbuf,
+                                                struct wl_list *classes);
 
-struct widget_builder* wofi_widget_builder_get_idx(struct widget_builder* builder, size_t idx);
+struct widget_builder *
+wofi_widget_builder_get_idx(struct widget_builder *builder, size_t idx);
 
-struct widget* wofi_widget_builder_get_widget(struct widget_builder* builder);
+struct widget *wofi_widget_builder_get_widget(struct widget_builder *builder);
 
-void wofi_widget_builder_free(struct widget_builder* builder);
+void wofi_widget_builder_free(struct widget_builder *builder);
 
 #endif

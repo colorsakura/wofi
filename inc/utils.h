@@ -26,13 +26,13 @@ time_t utils_get_time_millis(void);
 
 void utils_sleep_millis(time_t millis);
 
-char* utils_concat(size_t arg_count, ...);
+char *utils_concat(size_t arg_count, ...);
 
 size_t utils_min(size_t n1, size_t n2);
 
 size_t utils_min3(size_t n1, size_t n2, size_t n3);
 
-size_t utils_distance(const char* haystack, const char* needle);
+size_t utils_distance(const char *haystack, const char *needle);
 
 void utils_mkdir(char *path, mode_t mode);
 
